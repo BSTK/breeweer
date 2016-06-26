@@ -1,8 +1,12 @@
 package br.com.brunoluz.breeweer.config.init;
 
+import javax.servlet.Filter;
+
+import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 import br.com.brunoluz.breeweer.config.WebConfig;
+import br.com.brunoluz.breeweer.utils.CharacterEncoding;
 
 public class AppInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
 
@@ -34,5 +38,22 @@ public class AppInitializer extends AbstractAnnotationConfigDispatcherServletIni
 	protected String[] getServletMappings() {
 		return new String[] { "/" };
 	}
+	
+	
+	
+	/**
+	 * Define e força a utilização do encolding UTF-8
+	 */
+	@Override
+	protected Filter[] getServletFilters() {
+		
+		CharacterEncodingFilter characterEncodingFilter = new CharacterEncodingFilter();
+		characterEncodingFilter.setEncoding(CharacterEncoding.UTF_8);
+		characterEncodingFilter.setForceEncoding(Boolean.TRUE);
+		
+		return new Filter[] { characterEncodingFilter };
+		
+	}
+	
 
 }

@@ -14,15 +14,19 @@ public class Cerveja implements Serializable {
 	 * serialVersionUID
 	 */
 	private static final long serialVersionUID = 8026447830293560299L;
+	
+	@NotBlank
+	@Size(min = 5, max = 5)
+	@Pattern(regexp = "^[A-Z0-9]*$")
+	private String sku;
 
 	@NotBlank
 	@Size(min = 5, max = 50)
 	private String nome;
 	
 	@NotBlank
-	@Size(min = 5, max = 5)
-	@Pattern(regexp = "^[A-Z0-9]*$")
-	private String sku;
+	@Size(min = 5, max = 50)
+	private String descricao;
 
 	
 	/**
@@ -55,6 +59,21 @@ public class Cerveja implements Serializable {
 	public void setSku(String sku) {
 		this.sku = sku;
 	}
-	
 
+
+	/**
+	 * @return the descricao
+	 */
+	public String getDescricao() {
+		return descricao;
+	}
+
+
+	/**
+	 * @param descricao the descricao to set
+	 */
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
+	}
+	
 }
