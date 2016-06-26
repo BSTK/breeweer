@@ -2,6 +2,11 @@ package br.com.brunoluz.breeweer.model;
 
 import java.io.Serializable;
 
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.NotBlank;
+
 public class Cerveja implements Serializable {
 
 	
@@ -10,9 +15,13 @@ public class Cerveja implements Serializable {
 	 */
 	private static final long serialVersionUID = 8026447830293560299L;
 
-	
+	@NotBlank
+	@Size(min = 5, max = 50)
 	private String nome;
 	
+	@NotBlank
+	@Size(min = 5, max = 5)
+	@Pattern(regexp = "^[A-Z0-9]*$")
 	private String sku;
 
 	

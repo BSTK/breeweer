@@ -26,9 +26,12 @@
 
 		<!-- Servlet API -->
 		<servlet.version>3.1.0</servlet.version>
-		
+
 		<!-- Thymeleaf -->
 		<thymeleaf.version>3.0.0.RELEASE</thymeleaf.version>
+		
+		<!-- Hibernate Validation -->
+		<hibernate.validation.version>5.2.4.Final</hibernate.validation.version>
 
 	</properties>
 
@@ -72,14 +75,25 @@
 			<groupId>org.thymeleaf</groupId>
 			<artifactId>thymeleaf</artifactId>
 			<version>${thymeleaf.version}</version>
+			<scope>compile</scope>
 		</dependency>
-		
-		
+
+
 		<!-- Thymeleaf Spring 4 Suport -->
 		<dependency>
 			<groupId>org.thymeleaf</groupId>
 			<artifactId>thymeleaf-spring4</artifactId>
 			<version>${thymeleaf.version}</version>
+			<scope>compile</scope>
+		</dependency>
+
+		
+		<!-- Bean validation / Hibernate validation -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-validator</artifactId>
+			<version>${hibernate.validation.version}</version>
+			<scope>compile</scope>
 		</dependency>
 
 	</dependencies>
