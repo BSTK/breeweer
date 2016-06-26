@@ -3,9 +3,11 @@ package br.com.brunoluz.breeweer.web.controller;
 import javax.validation.Valid;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.com.brunoluz.breeweer.model.Cerveja;
 
@@ -21,18 +23,18 @@ public class CervejaController {
 	
 	
 	@RequestMapping(value = { "/cervejas/novo" }, method = RequestMethod.POST)
-	public String cadastrar(@Valid Cerveja cerveja, BindingResult result) {
+	public String cadastrar(@Valid Cerveja cerveja, BindingResult result, Model model, RedirectAttributes attributes) {
 		
 		if (result.hasErrors()) {
-			System.out.println("Tem erros no formulário !!");
+			
+			model.addAttribute("menssagem", "Tem erros no formulário !!");
+			return "cervejas/cadastro-cerveja";
+			
 		}
 		
-		System.out.println(">>> Cadastrar Cerveja : " + cerveja.getSku());
-		System.out.println(">>> Cadastrar Cerveja : " + cerveja.getNome());
-		
-		return "cervejas/cadastro-cerveja";
+		attributes.addFlashAttribute("menssagem", "Cadastro com sucesso !");
+		return "redirect:/cervejas/novo";
 		
 	}
-	
 	
 }

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 	<meta charset="UTF-8">
 	<title>App BreeWeer</title>
@@ -8,7 +8,9 @@
 
 	
 	<form method="POST">
-	
+		
+		<span th:text="${menssagem}"></span><br />
+		
 		<label for="ku">SKU:</label>
 		<input name="sku" type="text" /> <br />
 		
