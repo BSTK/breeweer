@@ -34,4 +34,11 @@ public class CervejaController {
 		
 	}
 	
+	
+	@RequestMapping(value = { "/cervejas/cadastro" })
+	public String cadastro() {
+		return "cervejas/cadastro-produto";
+	}
+	
+	
 }

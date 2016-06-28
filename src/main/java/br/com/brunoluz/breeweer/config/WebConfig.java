@@ -3,6 +3,7 @@ package br.com.brunoluz.breeweer.config;
 import static br.com.brunoluz.breeweer.utils.CharacterEncoding.UTF_8;
 import static br.com.brunoluz.breeweer.utils.ConstantsPath.BASE_PACKAGE_CLASSES;
 import static br.com.brunoluz.breeweer.utils.ConstantsPath.CLASSPATH_TEMPLATES;
+import static br.com.brunoluz.breeweer.utils.ConstantsPath.CLASSPATH_STATIC;
 
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
@@ -12,6 +13,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.thymeleaf.ITemplateEngine;
 import org.thymeleaf.spring4.SpringTemplateEngine;
@@ -84,5 +86,16 @@ public class WebConfig extends WebMvcConfigurerAdapter implements ApplicationCon
 		return template;
 		
 	}
+	
+	
+	
+	/**
+	 * Configura a localização dos arquivos estaticos (imagens, js e css)
+	 */
+	@Override
+	public void addResourceHandlers(ResourceHandlerRegistry registry) {
+		registry.addResourceHandler("/**").addResourceLocations(CLASSPATH_STATIC);
+	}
+	
 	
 }
