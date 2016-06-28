@@ -2,8 +2,9 @@ package br.com.brunoluz.breeweer.config;
 
 import static br.com.brunoluz.breeweer.utils.CharacterEncoding.UTF_8;
 import static br.com.brunoluz.breeweer.utils.ConstantsPath.BASE_PACKAGE_CLASSES;
-import static br.com.brunoluz.breeweer.utils.ConstantsPath.CLASSPATH_TEMPLATES;
 import static br.com.brunoluz.breeweer.utils.ConstantsPath.CLASSPATH_STATIC;
+import static br.com.brunoluz.breeweer.utils.ConstantsPath.CLASSPATH_TEMPLATES;
+import nz.net.ultraq.thymeleaf.LayoutDialect;
 
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
@@ -64,6 +65,7 @@ public class WebConfig extends WebMvcConfigurerAdapter implements ApplicationCon
 		SpringTemplateEngine engine = new SpringTemplateEngine();	
 		engine.setEnableSpringELCompiler(Boolean.TRUE);
 		engine.setTemplateResolver(templateResolver());
+		engine.addDialect(new LayoutDialect());
 		
 		return engine;
 		
