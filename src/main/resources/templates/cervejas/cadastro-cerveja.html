@@ -7,20 +7,23 @@
 <body>
 
 	
-	<form method="POST">
+	<form th:object="${cerveja}" method="POST">
 		
 		<span th:text="${menssagem}"></span><br />
 		
 		<label for="ku">SKU:</label>
-		<input name="sku" type="text" /> 
+		<input th:field="*{sku}" type="text" /> 
+		<span th:if="${#fields.hasErrors('sku')}" th:errors="*{sku}"></span>
 		<br />
 		
 		<label for="nome">NOME:</label>
-		<input name="nome" type="text" /> 
+		<input th:field="*{nome}" type="text" /> 
+		<span th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></span>
 		<br />
 		
 		<label for="descricao">DESCRIÇÃO:</label>
-		<textarea name="descricao"></textarea> 
+		<textarea th:field="*{descricao}"></textarea> 
+		<span th:if="${#fields.hasErrors('descricao')}" th:errors="*{descricao}"></span>
 		<br />
 		
 		<button type="submit">Salvar</button>

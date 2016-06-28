@@ -17,7 +17,7 @@ public class CervejaController {
 	 
 	
 	@RequestMapping(value = { "/cervejas/novo" })
-	public String novo() {
+	public String novo(Cerveja cerveja) {
 		return "cervejas/cadastro-cerveja";
 	}
 	
@@ -26,10 +26,7 @@ public class CervejaController {
 	public String cadastrar(@Valid Cerveja cerveja, BindingResult result, Model model, RedirectAttributes attributes) {
 		
 		if (result.hasErrors()) {
-			
-			model.addAttribute("menssagem", "Tem erros no formulário !!");
-			return "cervejas/cadastro-cerveja";
-			
+			return novo(cerveja);
 		}
 		
 		attributes.addFlashAttribute("menssagem", "Cadastro com sucesso !");

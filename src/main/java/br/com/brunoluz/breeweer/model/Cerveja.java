@@ -2,7 +2,6 @@ package br.com.brunoluz.breeweer.model;
 
 import java.io.Serializable;
 
-import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotBlank;
@@ -15,17 +14,16 @@ public class Cerveja implements Serializable {
 	 */
 	private static final long serialVersionUID = 8026447830293560299L;
 	
-	@NotBlank
-	@Size(min = 5, max = 5)
-	@Pattern(regexp = "^[A-Z0-9]*$")
+	@NotBlank(message = "Informar o código de SKU")
+	@Size(min = 5, max = 5, message = "Código SKU deve conter de 5 caracteres")
 	private String sku;
 
-	@NotBlank
-	@Size(min = 5, max = 50)
+	@NotBlank(message = "Informar o nome")
+	@Size(min = 5, max = 50, message = "Nome deve conter de 5 a 50 caracteres")
 	private String nome;
 	
-	@NotBlank
-	@Size(min = 5, max = 50)
+	@NotBlank(message = "Informar a descrição")
+	@Size(min = 5, max = 50, message = "Descrição deve conter de 5 a 50 caracteres")
 	private String descricao;
 
 	
