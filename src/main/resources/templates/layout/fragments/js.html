@@ -2,11 +2,28 @@
 
 	<th:block th:fragment="js">
 	
+		<!-- Vendors -->
 		<script th:src="@{/layout/javascripts/vendors.min.js}"></script>
+		<script th:src="@{/javascript/vendors/maskMoney/jquery.maskMoney.min.js}"></script>
+		<script th:src="@{/javascript/vendors/bootstrap-switch/bootstrap-switch.min.js}"></script>
+		
+		<!-- Algaworks -->
 		<script th:src="@{/layout/javascripts/algaworks.min.js}"></script>
 		
-		<script th:src="@{/javascript/vendors/maskMoney/jquery.maskMoney.min.js}"></script>
+		<!-- Breeweer -->
 		<script th:src="@{/javascript/breeweer/breeweer.js}"></script>
+		
+		<script type="text/javascript">
+
+			$('.js-status').bootstrapSwitch({
+				size: 'small',
+				onColor: 'success',
+				offColor: 'danger',
+				onText: 'Ativo',
+				offText: 'Inativo'
+			});
+		
+		</script>
 	
 	</th:block>
 	
