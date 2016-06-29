@@ -13,137 +13,30 @@
 	
 	<title>App BreeWeer</title>
 	
-	<link rel="stylesheet" type="text/css" th:href="@{/layout/stylesheets/vendors.min.css}"/>
-	<link rel="stylesheet" type="text/css" th:href="@{/layout/stylesheets/algaworks.min.css}"/>
-	<link rel="stylesheet" type="text/css" th:href="@{/layout/stylesheets/application.css}"/>
-	
-	<link rel="apple-touch-icon" sizes="57x57" th:href="@{/favicon/apple-icon-57x57.png}" />
-	<link rel="apple-touch-icon" sizes="60x60" th:href="@{/favicon/apple-icon-60x60.png}" />
-	<link rel="apple-touch-icon" sizes="72x72" th:href="@{/favicon/apple-icon-72x72.png}" />
-	<link rel="apple-touch-icon" sizes="76x76" th:href="@{/favicon/apple-icon-76x76.png}" />
-	<link rel="apple-touch-icon" sizes="114x114" th:href="@{/favicon/apple-icon-114x114.png}" />
-	<link rel="apple-touch-icon" sizes="120x120" th:href="@{/favicon/apple-icon-120x120.png}" />
-	<link rel="apple-touch-icon" sizes="144x144" th:href="@{/favicon/apple-icon-144x144.png}" />
-	<link rel="apple-touch-icon" sizes="152x152" th:href="@{/favicon/apple-icon-152x152.png}" />
-	<link rel="apple-touch-icon" sizes="180x180" th:href="@{/favicon/apple-icon-180x180.png}" />
-	<link rel="icon" type="image/png" sizes="192x192"  th:href="@{/favicon/android-icon-192x192.png}" />
-	<link rel="icon" type="image/png" sizes="32x32" th:href="@{/favicon/favicon-32x32.png}" />
-	<link rel="icon" type="image/png" sizes="96x96" th:href="@{/favicon/favicon-96x96.png}" />
-	<link rel="icon" type="image/png" sizes="16x16" th:href="@{/favicon/favicon-16x16.png}" />
-	<link rel="manifest" th:href="@{/favicon/manifest.json}">
-	
-	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-	<!--[if lt IE 9]>
-		<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-	<![endif]-->
+	<!-- Include css -->
+	<th:block th:include="layout/fragments/css :: css" />
 	
 </head>
 <body>
 
 	<div class="aw-layout-page">
 	
-		<nav id="main-navbar" class="navbar  navbar-fixed-top  navbar-default  js-sticky-reference">
-			<div class="container-fluid">
-
-				<div class="navbar-header">
-					<a class="navbar-brand  hidden-xs" href="#"> 
-						<img alt="AlgaWorks" th:src="@{/imagens/logo.png}" />
-					</a>
-
-					<ul class="nav  navbar-nav">
-						<li>
-							<a href="#" class="js-sidebar-toggle">
-								<i class="fa  fa-bars"></i>
-							</a>
-						</li>
-					</ul>
-
-				</div>
-
-				<ul class="nav navbar-nav  navbar-right">
-					<li>
-						<a href="#">
-							<em class="fa  fa-sign-out"></em>
-						</a>
-					</li>
-				</ul>
-
-			</div>
-		</nav>
+		<!-- Include navbar -->
+		<th:block th:include="layout/fragments/navbar :: navbar" />
 		
-		<aside class="aw-layout-sidebar  js-sidebar">
-			<div class="aw-layout-sidebar__content">
-
-				<nav class="aw-menu  js-menu">
-					<ul class="aw-menu__list">
-
-						<li class="aw-menu__item">
-							<a href="dashboard.html">
-								<i class="fa  fa-fw  fa-home"></i>
-								<span>Dashboard</span>
-							</a>
-						</li>
-
-						<li class="aw-menu__item  is-active">
-							<a href="#"> 
-								<i class="fa  fa-fw  fa-file-text"></i>
-								<span>Cadastros</span> 
-								<i class="aw-menu__navigation-icon  fa"></i>
-							</a>
-							<ul class="aw-menu__list  aw-menu__list--sublist">
-								<li class="aw-menu__item  aw-menu__item--link">
-									<a href="cadastro-produto.html">Cadastro de produto</a>
-								</li>
-								<li class="aw-menu__item  aw-menu__item--link  is-active">
-									<a href="pesquisa-produtos.html">Pesquisa de produtos</a>
-								</li>
-								<li class="aw-menu__item  aw-menu__item--link">
-									<a href="tabela-sem-dados.html">Tabela sem dados</a>
-								</li>
-							</ul>
-						</li>
-
-						<li class="aw-menu__item  is-expanded">
-							<a href="#"> 
-								<i class="fa  fa-fw  fa-file-text"></i>
-								<span>Páginas comuns</span>
-								<i class="aw-menu__navigation-icon  fa"></i>
-							</a>
-
-							<ul class="aw-menu__list  aw-menu__list--sublist">
-								<li class="aw-menu__item  aw-menu__item--link">
-									<a href="pagina-vazia.html">Página vazia</a>
-								</li>
-								<li class="aw-menu__item  aw-menu__item--link">
-									<a href="login.html">Login</a>
-								</li>
-							</ul>
-						</li>
-
-					</ul>
-				</nav>
-
-			</div>
-		</aside>
-	
+		<!-- Include menu -->
+		<th:block th:include="layout/fragments/menu :: menu" />
+		
+		<!-- Include conteudo -->
 		<section class="aw-layout-content  js-content" layout:fragment="conteudo"></section>
 
-		<footer class="aw-layout-footer  js-content">
-			<div class="container-fluid">
-				<span class="aw-footer-disclaimer">&copy; 2016 AlgaWorks. Todos os direitos reservados.</span>
-			</div>
-		</footer>
+		<!-- Include footer -->
+		<th:block th:include="layout/fragments/footer :: footer" />
 	
 	</div>
-
-	<script th:src="@{/layout/javascripts/vendors.min.js}"></script>
-	<script th:src="@{/layout/javascripts/algaworks.min.js}"></script>
 	
-	<script th:src="@{/javascript/vendors/maskMoney/jquery.maskMoney.min.js}"></script>
-	<script th:src="@{/javascript/breeweer/breeweer.js}"></script>
-	
+	<!-- Include js -->
+	<th:block th:include="layout/fragments/js :: js" />
 	
 </body>
 </html>

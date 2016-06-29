@@ -1,0 +1,36 @@
+<html xmlns:th="http://www.thymeleaf.org">
+	
+	<th:block th:fragment="navbar">
+		
+		<nav id="main-navbar" class="navbar  navbar-fixed-top  navbar-default  js-sticky-reference">
+			<div class="container-fluid">
+
+				<div class="navbar-header">
+					<a class="navbar-brand  hidden-xs" href="#"> 
+						<img alt="AlgaWorks" th:src="@{/imagens/logo.png}" />
+					</a>
+
+					<ul class="nav  navbar-nav">
+						<li>
+							<a href="#" class="js-sidebar-toggle">
+								<i class="fa  fa-bars"></i>
+							</a>
+						</li>
+					</ul>
+
+				</div>
+
+				<ul class="nav navbar-nav  navbar-right">
+					<li>
+						<a href="#">
+							<em class="fa  fa-sign-out"></em>
+						</a>
+					</li>
+				</ul>
+
+			</div>
+		</nav>
+		
+	</th:block>
+
+</html>
