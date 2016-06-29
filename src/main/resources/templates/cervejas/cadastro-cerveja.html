@@ -48,7 +48,7 @@
 								</select>
 								
 								<div class="bw-field-action-icon">
-									<a href="#">
+									<a href="#" data-toggle="modal" data-target="#cadastroRapidoEstilo">
 										<i class="glyphicon glyphicon-plus-sign bw-glyphicon-large"></i>
 									</a>
 								</div>
@@ -118,6 +118,11 @@
 			</form>
 		
 		</div>
+		
+		
+		<!-- Include Modal -->
+		<th:block th:include="estilo/cadastro-rapido-estilo :: modal-cadastro-rapido-estilo" />
+		
 					
 	</section>
 			
