@@ -17,6 +17,8 @@ import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotBlank;
 
+import br.com.brunoluz.breeweer.validation.SKU;
+
 
 @Entity
 @Table(name ="TB_CERVEJA")
@@ -32,8 +34,9 @@ public class Cerveja implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
+	@SKU
 	@NotBlank(message = "Informar o código de SKU")
-	@Size(min = 5, max = 5, message = "Código SKU deve conter de 5 caracteres")
+	@Size(min = 6, max = 6, message = "Código SKU deve conter de 6 caracteres")
 	@Column(name = "SKU")
 	private String sku;
 
