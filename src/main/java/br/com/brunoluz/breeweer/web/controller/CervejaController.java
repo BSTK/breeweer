@@ -4,7 +4,6 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -43,9 +42,7 @@ public class CervejaController {
 	
 	
 	@RequestMapping(value = { "/cervejas/novo" }, method = RequestMethod.POST)
-	public ModelAndView cadastrar(@Valid Cerveja cerveja, BindingResult result, Model model, RedirectAttributes attributes) {
-		
-		ModelAndView view = new ModelAndView();
+	public ModelAndView cadastrar(@Valid Cerveja cerveja, BindingResult result, RedirectAttributes attributes) {
 		
 		if (result.hasErrors()) {
 			return novo(cerveja);
@@ -53,10 +50,9 @@ public class CervejaController {
 		
 		service.salvar(cerveja);
 		
-		view.setViewName("redirect:/cervejas/novo");
-		view.addObject("menssagem", "Cadastro com sucesso !");
+		attributes.addFlashAttribute("mensagem", "Cerveja salva com sucesso!");
 		
-		return view;
+		return new ModelAndView("redirect:/cervejas/novo");
 		
 	}
 

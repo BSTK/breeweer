@@ -1,0 +1,13 @@
+<html xmlns:th="http://www.thymeleaf.org">
+
+	<th:block th:fragment="menssagem-sucesso">
+		<div th:if="${not #strings.isEmpty(mensagem)}" class="alert alert-success alert-dismissible" role="alert">
+			<button type="button" class="close" data-dismiss="alert" arial-hidden="true">&times;</button>
+			<div>
+				<i class="glyphicon glyphicon-ok"></i>
+				<strong th:text="${mensagem}"></strong>
+			</div>
+		</div>
+	</th:block>
+
+</html>
