@@ -96,7 +96,7 @@ $(function () {
 		
 		setTimeout(function() {
 			modal.modal('hide');
-		}, 400);
+		}, 10000);
 		
 	}
 	

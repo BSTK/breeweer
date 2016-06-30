@@ -20,6 +20,7 @@ import br.com.brunoluz.breeweer.service.CadastroEstiloService;
 
 
 @Controller
+@RequestMapping(value = "/estilos")
 public class EstiloController {
 	 
 	
@@ -27,17 +28,17 @@ public class EstiloController {
 	private CadastroEstiloService service;
 	
 	
-	@RequestMapping(value = { "/estilo/novo" })
+	@RequestMapping(value = { "/novo" }, method = RequestMethod.GET)
 	public ModelAndView novo(Estilo estilo) {
 		
-		ModelAndView view = new ModelAndView("estilo/cadastro-estilo");
+		ModelAndView view = new ModelAndView("estilos/cadastro-estilo");
 		view.addObject(estilo);
 		
 		return view;
 	}
 	
 	
-	@RequestMapping(value = { "/estilo/novo" }, method = RequestMethod.POST)
+	@RequestMapping(value = { "/novo" }, method = RequestMethod.POST)
 	public ModelAndView cadastrar(@Valid Estilo estilo, BindingResult result, RedirectAttributes attributes) {
 		
 		if (result.hasErrors()) {
@@ -55,13 +56,12 @@ public class EstiloController {
 			
 		}
 		
-		return new ModelAndView("redirect:/estilo/novo");
+		return new ModelAndView("redirect:/estilos/novo");
 		
 	}
 	
 	
 	@RequestMapping( 
-		value = "/estilos",
 		method = RequestMethod.POST,
 		consumes = MediaType.APPLICATION_JSON_VALUE
 	)
