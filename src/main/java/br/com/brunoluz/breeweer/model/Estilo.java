@@ -29,7 +29,7 @@ public class Estilo implements Serializable {
 	private Long id;
 	
 	@NotBlank(message = "Informar o nome")
-	@Size(min = 5, max = 50, message = "Nome deve conter de 5 a 50 caracteres")
+	@Size(max = 50, message = "Nome deve conter até 50 caracteres")
 	@Column(name = "NOME")
 	private String nome;
 	
