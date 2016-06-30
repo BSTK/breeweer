@@ -10,6 +10,8 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 
@@ -65,6 +67,8 @@ public class Cerveja implements Serializable {
 	@Column(name = "ORIGEM")
 	private Origem origem;
 	
+	@ManyToOne
+	@JoinColumn(name = "ID_ESTILO")
 	@Column(name = "ESTILO")
 	private Estilo estilo;
 

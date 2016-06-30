@@ -1,16 +1,19 @@
 package br.com.brunoluz.breeweer.model;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotBlank;
+
 
 @Entity
 @Table(name ="TB_ESTILO")
@@ -29,6 +32,10 @@ public class Estilo implements Serializable {
 	@Size(min = 5, max = 50, message = "Nome deve conter de 5 a 50 caracteres")
 	@Column(name = "NOME")
 	private String nome;
+	
+	@OneToMany(mappedBy = "estilo")
+	private List<Cerveja> cervejas;
+	
 
 	/**
 	 * @return the id
@@ -58,6 +65,19 @@ public class Estilo implements Serializable {
 		this.nome = nome;
 	}
 	
+	/**
+	 * @return the cervejas
+	 */
+	public List<Cerveja> getCervejas() {
+		return cervejas;
+	}
+
+	/**
+	 * @param cervejas the cervejas to set
+	 */
+	public void setCervejas(List<Cerveja> cervejas) {
+		this.cervejas = cervejas;
+	}
 
 	/**
 	 * (non-Javadoc)
