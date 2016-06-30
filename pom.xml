@@ -54,6 +54,9 @@
 		
 		<!-- Mchange Commons Java -->
 		<mchange-commons-version>0.2.11</mchange-commons-version>
+		
+		<!-- Jackson - JSON -->
+		<jackson-core.version>2.7.5</jackson-core.version>
 
 	</properties>
 
@@ -218,6 +221,15 @@
 			<version>${mchange-commons-version}</version>
 		</dependency>
 
+
+		<!-- Jackson - JSON -->
+		<dependency>
+		    <groupId>com.fasterxml.jackson.core</groupId>
+		    <artifactId>jackson-databind</artifactId>
+		    <version>${jackson-core.version}</version>
+		    <scope>compile</scope>
+		</dependency>
+		
 	</dependencies>
 
 	<build>

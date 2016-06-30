@@ -22,7 +22,7 @@ public class CadastroEstiloService {
 	 * salvar
 	 * @param cerveja
 	 */
-	public void salvar(Estilo estilo) {
+	public Estilo salvar(Estilo estilo) {
 		
 		Optional<Estilo> estiloOptional = repository.findByNomeIgnoreCase(estilo.getNome());
 		
@@ -30,7 +30,7 @@ public class CadastroEstiloService {
 			throw new NomeEstiloJaCadastrado("Estilo já cadastrado !");
 		}
 		
-		repository.save(estilo);
+		return repository.saveAndFlush(estilo);
 	}
 	
 }
