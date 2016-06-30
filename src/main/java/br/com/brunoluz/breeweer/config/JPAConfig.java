@@ -40,7 +40,7 @@ public class JPAConfig {
 		
 		HibernateJpaVendorAdapter hibernateJpaVendorAdapter = new HibernateJpaVendorAdapter();
 		hibernateJpaVendorAdapter.setDatabase(Database.MYSQL);
-		hibernateJpaVendorAdapter.setShowSql(Boolean.TRUE);
+		hibernateJpaVendorAdapter.setShowSql(Boolean.FALSE);
 		hibernateJpaVendorAdapter.setGenerateDdl(Boolean.FALSE);
 		hibernateJpaVendorAdapter.setDatabasePlatform(DATABASE_PLATAFORM_NAME);
 		
