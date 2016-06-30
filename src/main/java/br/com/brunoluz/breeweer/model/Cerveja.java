@@ -13,6 +13,11 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.DecimalMax;
+import javax.validation.constraints.DecimalMin;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotBlank;
@@ -41,35 +46,47 @@ public class Cerveja implements Serializable {
 	private String sku;
 
 	@NotBlank(message = "Informar o nome")
-	@Size(min = 5, max = 50, message = "Nome deve conter de 5 a 50 caracteres")
+	@Size(max = 50, message = "Nome deve conter no máximo 50 caracteres")
 	@Column(name = "NOME")
 	private String nome;
 	
 	@NotBlank(message = "Informar a descrição")
-	@Size(min = 5, max = 50, message = "Descrição deve conter de 5 a 50 caracteres")
+	@Size(min = 5, max = 500, message = "Descrição deve conter de 5 a 500 caracteres")
 	@Column(name = "DESCRICAO")
 	private String descricao;
 	
+	@DecimalMin(value = "0.25", message = "Valor minimo é de R$ 0,25")
+	@DecimalMax(value = "999999999.99", message = "Valor máximo é de R$ 999.999.999,00")
 	@Column(name = "VALOR")
 	private BigDecimal valor;
 	
+	@DecimalMin(value = "0.25", message = "Teor Alcoólico minimo é de 0,25 %")
+	@DecimalMax(value = "99.99", message = "Teor Alcoólico máximo é de 99,00 %")
 	@Column(name = "TEOR_ALCOOLICO")
 	private BigDecimal teorAlcoolico;
 	
+	@DecimalMin(value = "1.00", message = "Comisão minima é de 1,00 %")
+	@DecimalMax(value = "50.00", message = "Commisão máxima é de 50,00 %")
 	@Column(name = "COMISSAO")
 	private BigDecimal comissao;
 	
+	@Min(value = 1)
+	@Max(value = 1000000)
+	@NotNull(message = "Informar a quantidade de estoque")
 	@Column(name = "QUANTIDADE_ESTOQUE")
 	private Integer quantidadeEstoque;
 	
+	@NotBlank(message = "Informar o sabor")
 	@Enumerated(EnumType.STRING)
 	@Column(name = "SABOR")
 	private Sabor sabor;
 	
+	@NotNull(message = "Informar a origem")
 	@Enumerated(EnumType.STRING)
 	@Column(name = "ORIGEM")
 	private Origem origem;
 	
+	@NotNull(message = "Informar o estilo")
 	@ManyToOne
 	@JoinColumn(name = "ID_TB_ESTILO")
 	private Estilo estilo;
