@@ -49,9 +49,9 @@ $(function () {
 	
 	
 	/**
-	 * onErrorSalvaEstilo
+	 * botaoSalvarOnClick
 	 */
-	function onErrorSalvaEstilo() {
+	function botaoSalvarOnClick() {
 		
 		const METHOD = 'POST';
 		const CONTENT_TYPE_JASON = 'application/json';
@@ -77,7 +77,7 @@ $(function () {
 	/**
 	 * onSucessoSalvaEstilo
 	 */
-	function onSucessoSalvaEstilo() {
+	function onSucessoSalvaEstilo(estilo) {
 		
 		campoNomeEstilo.val('');
 		
@@ -89,9 +89,14 @@ $(function () {
 		
 		containerMenssagem.html('<i class="glyphicon glyphicon-ok"></i><strong>Estilo salvo com sucesso !</strong>');
 		
+		var selectEstilo = $('.js-select-estilo');
+		
+		selectEstilo.append('<option value=' + estilo.id + '>' + estilo.nome + '</option>');
+		selectEstilo.val(estilo.id);
+		
 		setTimeout(function() {
 			modal.modal('hide');
-		}, 500);
+		}, 400);
 		
 	}
 	
@@ -106,8 +111,10 @@ $(function () {
 		var menssagemErro = resposta.responseText;
 		
 		containerMenssagem.removeClass('hidden');
+		containerMenssagem.removeClass('alert-success');
 		containerMenssagem.html('<i class="fa fa-exclamation-circle"></i><strong> ' + menssagemErro + '</strong>');
 		
+		containerMenssagem.addClass('alert-danger');
 		formulario.find('div.form-group').addClass('has-error');
 		
 	}

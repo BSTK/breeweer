@@ -47,7 +47,7 @@
 						<div class="form-group" th:classappend="${#fields.hasErrors('estilo')} ? has-error">
 							<label for="estilo" class="control-label">Estilo*</label>
 							<div class="bw-field-action">
-								<select class="form-control" th:field="*{estilo}">
+								<select class="form-control js-select-estilo" th:field="*{estilo}">
 									<option value="" label="Selecionar estilo">
 									<option th:each="estilo : ${estilos}" th:value="${estilo.id}" th:label="${estilo.nome}" />
 								</select>
