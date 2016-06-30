@@ -1,6 +1,6 @@
 package br.com.brunoluz.breeweer.exception;
 
-public class NomeEstiloJaCadastrado extends RuntimeException {
+public class NomeEstiloJaCadastradoException extends RuntimeException {
 
 	
 	/**
@@ -8,7 +8,7 @@ public class NomeEstiloJaCadastrado extends RuntimeException {
 	 */
 	private static final long serialVersionUID = -6481914249071232921L;
 
-	public NomeEstiloJaCadastrado(String menssagem) {
+	public NomeEstiloJaCadastradoException(String menssagem) {
 		super(menssagem);
 	}
 	

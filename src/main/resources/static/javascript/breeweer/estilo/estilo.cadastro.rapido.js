@@ -87,7 +87,7 @@ $(function () {
 		
 		formulario.find('div.form-group').removeClass('has-error');
 		
-		containerMenssagem.html('<i class="glyphicon glyphicon-ok"></i><strong>Estilo salvo com sucesso !</strong>');
+		containerMenssagem.html('<i class="glyphicon glyphicon-ok"></i><strong> Estilo salvo com sucesso !</strong>');
 		
 		var selectEstilo = $('.js-select-estilo');
 		
@@ -96,7 +96,7 @@ $(function () {
 		
 		setTimeout(function() {
 			modal.modal('hide');
-		}, 10000);
+		}, 300);
 		
 	}
 	

@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import br.com.brunoluz.breeweer.exception.NomeEstiloJaCadastrado;
+import br.com.brunoluz.breeweer.exception.NomeEstiloJaCadastradoException;
 import br.com.brunoluz.breeweer.model.Estilo;
 import br.com.brunoluz.breeweer.service.CadastroEstiloService;
 
@@ -50,7 +50,7 @@ public class EstiloController {
 			service.salvar(estilo);
 			attributes.addFlashAttribute("mensagem", "Estilo salva com sucesso!");
 			
-		} catch (NomeEstiloJaCadastrado e) {
+		} catch (NomeEstiloJaCadastradoException e) {
 			result.rejectValue("nome", e.getMessage(), e.getMessage());
 			return novo(estilo);
 			
@@ -71,12 +71,7 @@ public class EstiloController {
 			return ResponseEntity.badRequest().body(result.getFieldError("nome").getDefaultMessage());
 		}
 		
-		try {
-			
-			estilo = service.salvar(estilo);
-		} catch (NomeEstiloJaCadastrado e) {
-			return ResponseEntity.badRequest().body(e.getMessage());
-		}
+		estilo = service.salvar(estilo);
 		
 		return ResponseEntity.ok(estilo);
 		
