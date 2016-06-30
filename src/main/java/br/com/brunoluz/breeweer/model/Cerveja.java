@@ -12,6 +12,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.PrePersist;
+import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 import javax.validation.constraints.DecimalMax;
 import javax.validation.constraints.DecimalMin;
@@ -76,7 +78,6 @@ public class Cerveja implements Serializable {
 	@Column(name = "QUANTIDADE_ESTOQUE")
 	private Integer quantidadeEstoque;
 	
-	@NotBlank(message = "Informar o sabor")
 	@Enumerated(EnumType.STRING)
 	@Column(name = "SABOR")
 	private Sabor sabor;
@@ -90,6 +91,13 @@ public class Cerveja implements Serializable {
 	@ManyToOne
 	@JoinColumn(name = "ID_TB_ESTILO")
 	private Estilo estilo;
+	
+	
+	@PrePersist
+	@PreUpdate
+	private void callbackSQKToUpperCase() {
+		setSku(sku.toUpperCase());
+	}
 
 	
 	/**
