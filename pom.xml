@@ -14,7 +14,7 @@
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
 		<failOnMissingWebXml>false</failOnMissingWebXml>
-		
+
 		<flyway-maven-plugin.version>4.0.2</flyway-maven-plugin.version>
 		<mysql-connector-java.version>5.1.39</mysql-connector-java.version>
 
@@ -32,33 +32,42 @@
 
 		<!-- Thymeleaf -->
 		<thymeleaf.version>3.0.0.RELEASE</thymeleaf.version>
-		
+
 		<!-- Thymeleaf - Layout Dialect -->
 		<thymeleaf-layout-dialect.version>2.0.0-SNAPSHOT</thymeleaf-layout-dialect.version>
-		
+
 		<!-- Hibernate Validation -->
 		<hibernate.validation.version>5.2.4.Final</hibernate.validation.version>
-		
+
 		<!-- Logging -->
 		<log4j.version>2.6</log4j.version>
 		<jcl-over-slf4j.version>1.7.21</jcl-over-slf4j.version>
-		
+
 		<!-- JPA / Hibernate -->
 		<hibernate.version>5.1.0.Final</hibernate.version>
+
+		<!-- Spring Data JPA -->
+		<spring-data-jpa.version>1.10.2.RELEASE</spring-data-jpa.version>
 		
+		<!-- C3p0 -->
+		<c3p0.version>0.9.1.2</c3p0.version>
+		
+		<!-- Mchange Commons Java -->
+		<mchange-commons-version>0.2.11</mchange-commons-version>
+
 	</properties>
-	
+
 	<repositories>
 		<repository>
 			<id>sonatype-nexus-snapshots</id>
-    		<name>Sonatype Nexus Snapshots</name>
-    		<url>https://oss.sonatype.org/content/repositories/snapshots</url>
-    		<snapshots>
-      			<enabled>true</enabled>
-    		</snapshots>
+			<name>Sonatype Nexus Snapshots</name>
+			<url>https://oss.sonatype.org/content/repositories/snapshots</url>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
 		</repository>
 	</repositories>
-	
+
 
 	<dependencyManagement>
 		<dependencies>
@@ -110,16 +119,16 @@
 			<version>${thymeleaf.version}</version>
 			<scope>compile</scope>
 		</dependency>
-		
-		
+
+
 		<!-- Thymeleaf - Layout Dialect -->
 		<dependency>
-    		<groupId>nz.net.ultraq.thymeleaf</groupId>
-    		<artifactId>thymeleaf-layout-dialect</artifactId>
-    		<version>${thymeleaf-layout-dialect.version}</version>
+			<groupId>nz.net.ultraq.thymeleaf</groupId>
+			<artifactId>thymeleaf-layout-dialect</artifactId>
+			<version>${thymeleaf-layout-dialect.version}</version>
 		</dependency>
 
-		
+
 		<!-- Bean validation / Hibernate validation -->
 		<dependency>
 			<groupId>org.hibernate</groupId>
@@ -136,29 +145,29 @@
 			<version>${log4j.version}</version>
 			<scope>compile</scope>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.apache.logging.log4j</groupId>
 			<artifactId>log4j-api</artifactId>
 			<version>${log4j.version}</version>
 			<scope>compile</scope>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.apache.logging.log4j</groupId>
 			<artifactId>log4j-core</artifactId>
 			<version>${log4j.version}</version>
 			<scope>compile</scope>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>jcl-over-slf4j</artifactId>
 			<version>${jcl-over-slf4j.version}</version>
 			<scope>compile</scope>
 		</dependency>
-		
-		
+
+
 		<!-- JPA / Hibernate -->
 		<dependency>
 			<groupId>org.hibernate</groupId>
@@ -169,14 +178,22 @@
 
 
 		<!-- Hibernate - Java 8 support -->
-        <dependency>
-    		<groupId>org.hibernate</groupId>
-    		<artifactId>hibernate-java8</artifactId>
-    		<version>${hibernate.version}</version>
-    		<scope>compile</scope>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-java8</artifactId>
+			<version>${hibernate.version}</version>
+			<scope>compile</scope>
 		</dependency>
-		
-		
+
+
+		<!-- Spring Data JPA -->
+		<dependency>
+			<groupId>org.springframework.data</groupId>
+			<artifactId>spring-data-jpa</artifactId>
+			<version>${spring-data-jpa.version}</version>
+		</dependency>
+
+
 		<!-- MySQL Driver -->
 		<dependency>
 			<groupId>mysql</groupId>
@@ -184,7 +201,23 @@
 			<version>${mysql-connector-java.version}</version>
 			<scope>compile</scope>
 		</dependency>
+
 		
+		<!-- C3p0 -->	
+		<dependency>
+			<groupId>c3p0</groupId>
+			<artifactId>c3p0</artifactId>
+			<version>${c3p0.version}</version>
+		</dependency>
+
+
+		<!-- Mchange Commons Java -->
+		<dependency>
+			<groupId>com.mchange</groupId>
+			<artifactId>mchange-commons-java</artifactId>
+			<version>${mchange-commons-version}</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>
@@ -192,7 +225,7 @@
 		<finalName>${artifactId}</finalName>
 
 		<plugins>
-		
+
 			<!-- Maven Compile -->
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
@@ -202,8 +235,8 @@
 					<target>${java.version}</target>
 				</configuration>
 			</plugin>
-			
-			
+
+
 			<!-- Flywaydb -->
 			<plugin>
 				<groupId>org.flywaydb</groupId>
@@ -213,8 +246,8 @@
 					<driver>com.mysql.jdbc.Driver</driver>
 				</configuration>
 			</plugin>
-			
-			
+
+
 			<!-- Webapp Runner -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -236,10 +269,10 @@
 								</artifactItem>
 							</artifactItems>
 						</configuration>
-					</execution> 
+					</execution>
 				</executions>
 			</plugin>
-			
+
 		</plugins>
 
 	</build>

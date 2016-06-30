@@ -50,7 +50,7 @@ public class Cerveja implements Serializable {
 	@Column(name = "VALOR")
 	private BigDecimal valor;
 	
-	@Column(name = "TEOR_ACOOLICO")
+	@Column(name = "TEOR_ALCOOLICO")
 	private BigDecimal teorAlcoolico;
 	
 	@Column(name = "COMISSAO")
@@ -69,7 +69,6 @@ public class Cerveja implements Serializable {
 	
 	@ManyToOne
 	@JoinColumn(name = "ID_TB_ESTILO")
-	@Column(name = "ESTILO")
 	private Estilo estilo;
 
 	

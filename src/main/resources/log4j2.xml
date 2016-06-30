@@ -9,7 +9,7 @@
 	
 	<Loggers>
 	
-		<Logger name="org.springframework" level="debug"/>
+		<Logger name="org.springframework" level="info"/>
 	
 		<Root level="error">
 			<AppenderRef ref="Console" />
