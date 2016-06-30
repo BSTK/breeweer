@@ -8,5 +8,4 @@ import br.com.brunoluz.breeweer.model.Cerveja;
 @Repository
 public interface CervejaRepository extends JpaRepository<Cerveja, Long> {
 
-	
 }

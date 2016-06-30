@@ -8,7 +8,7 @@
 		<div class="page-header">
 			<div class="container-fluid">
 				<h1>
-					Cadastro de produto
+					Cadastro de cerveja
 				</h1>
 			</div>
 		</div>
@@ -16,6 +16,12 @@
 		<div class="container-fluid">
 			
 			<form th:object="${cerveja}" method="POST" class="form-vertical  js-form-loading">
+				
+				<th:block th:if="${#fields.hasErrors('*')}">
+					<div th:each="error : ${#fields.errors('*')}">
+						<span th:text="${error}"></span>
+					</div>
+				</th:block>
 				
 				<div class="row">
 					<div class="col-sm-2">

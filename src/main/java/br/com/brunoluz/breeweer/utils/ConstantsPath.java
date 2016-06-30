@@ -22,6 +22,12 @@ public abstract class ConstantsPath {
 	
 	
 	/**
+	 * Pcote base dos services
+	 */
+	public static final String BASE_PACKAGE_CLASSES_SERVICE = "br.com.brunoluz.breeweer.service";
+	
+	
+	/**
 	 * Configura a pasta base para template
 	 */
 	public static final String CLASSPATH_TEMPLATES = "classpath:/templates/";

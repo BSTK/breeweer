@@ -15,6 +15,7 @@ import br.com.brunoluz.breeweer.model.Cerveja;
 import br.com.brunoluz.breeweer.model.Origem;
 import br.com.brunoluz.breeweer.model.Sabor;
 import br.com.brunoluz.breeweer.repository.EstiloRepository;
+import br.com.brunoluz.breeweer.service.CadastroCervejaService;
 
 
 @Controller
@@ -23,6 +24,9 @@ public class CervejaController {
 
 	@Autowired
 	private EstiloRepository estilos;
+	
+	@Autowired
+	private CadastroCervejaService service;
 	
 	
 	@RequestMapping(value = { "/cervejas/novo" })
@@ -42,12 +46,12 @@ public class CervejaController {
 	public ModelAndView cadastrar(@Valid Cerveja cerveja, BindingResult result, Model model, RedirectAttributes attributes) {
 		
 		ModelAndView view = new ModelAndView();
-		/*if (result.hasErrors()) {
-			return novo(cerveja);
-		}*/
 		
-		System.out.println("Estilo : " + cerveja.getEstilo());
-		System.out.println("Estilo : " + cerveja.getEstilo().getId());
+		if (result.hasErrors()) {
+			return novo(cerveja);
+		}
+		
+		service.salvar(cerveja);
 		
 		view.setViewName("redirect:/cervejas/novo");
 		view.addObject("menssagem", "Cadastro com sucesso !");
