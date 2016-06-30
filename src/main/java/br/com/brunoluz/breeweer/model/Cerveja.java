@@ -68,7 +68,7 @@ public class Cerveja implements Serializable {
 	private Origem origem;
 	
 	@ManyToOne
-	@JoinColumn(name = "ID_ESTILO")
+	@JoinColumn(name = "ID_TB_ESTILO")
 	@Column(name = "ESTILO")
 	private Estilo estilo;
 
