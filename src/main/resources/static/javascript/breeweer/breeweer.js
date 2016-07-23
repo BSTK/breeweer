@@ -1,19 +1,48 @@
-$(function () {
+var Breeweer = Breeweer || {};
+
+Breeweer.MaskMoney = (function () {
+	
+	'use-strict';
 	
 	/**
+	 * Função contrutora javascript
+	 */
+	function MaskMoney() {
+		this.decimal = $('.js-maskmoney-decimal');
+		this.integer = $('.js-maskmoney-integer');
+	};
+	
+	
+	/**
+	 * Habilita as configurações do objeto
 	 * @View : /cerveja/cadastro-cerveja
 	 * Mascarás de inputs para valores numéricos
 	 */
-	$('.js-maskmoney-decimal').maskMoney({
-		decimal: ',',
-		thousands: '.'
-	});
+	MaskMoney.prototype.enable = function () {
+		this.decimal.maskMoney({
+			decimal: ',',
+			thousands: '.'
+		});
+		
+		this.integer.maskMoney({
+			precision: 0,
+			thousands: '.'
+		});
+	};
 	
 	
-	$('.js-maskmoney-integer').maskMoney({
-		precision: 0,
-		thousands: '.'
-	});
+	/**
+	 * Retorna o objeto craido
+	 */
+	return MaskMoney;
 	
+}());
+
+$(function () {
+
+	'use-strict';
+	
+	var mascara = new Breeweer.MaskMoney();
+		mascara.enable();
 	
 });
