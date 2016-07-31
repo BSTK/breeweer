@@ -16,12 +16,8 @@
 					
 		<div class="container-fluid">
 			
-			<th:block th:include="fragments/menssagens/menssagens-sucesso :: menssagem-sucesso" />
-			
 			<form th:object="${cerveja}" method="POST" class="form-vertical  js-form-loading">
-			
-				<th:block th:include="fragments/menssagens/menssagens-error :: menssagens-error" />
-				
+				<breeweer:message />
 				<div class="row">
 					<div class="col-sm-2">
 						<div class="form-group" breeweer:classforerror="sku">

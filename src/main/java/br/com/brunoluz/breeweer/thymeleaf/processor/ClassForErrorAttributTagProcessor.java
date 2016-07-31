@@ -17,14 +17,7 @@ public class ClassForErrorAttributTagProcessor extends AbstractAttributeTagProce
 	
 	/**
 	 * ClassForErrorAttributTagProcessor
-	 * @param templateMode
 	 * @param dialectPrefix
-	 * @param elementName
-	 * @param prefixElementName
-	 * @param attributeName
-	 * @param prefixAttributeName
-	 * @param precedence
-	 * @param removeAttribute
 	 */
 	public ClassForErrorAttributTagProcessor(String dialectPrefix) {
 		

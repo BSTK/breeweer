@@ -57,16 +57,19 @@ public class Cerveja implements Serializable {
 	@Column(name = "DESCRICAO")
 	private String descricao;
 	
+	@NotNull(message = "Informar o valor")
 	@DecimalMin(value = "0.25", message = "Valor minimo é de R$ 0,25")
 	@DecimalMax(value = "999999999.99", message = "Valor máximo é de R$ 999.999.999,00")
 	@Column(name = "VALOR")
 	private BigDecimal valor;
 	
+	@NotNull(message = "Informar o teor alcóolico")
 	@DecimalMin(value = "0.25", message = "Teor Alcoólico minimo é de 0,25 %")
 	@DecimalMax(value = "99.99", message = "Teor Alcoólico máximo é de 99,00 %")
 	@Column(name = "TEOR_ALCOOLICO")
 	private BigDecimal teorAlcoolico;
 	
+	@NotNull(message = "Informar a comissão")
 	@DecimalMin(value = "1.00", message = "Comisão minima é de 1,00 %")
 	@DecimalMax(value = "50.00", message = "Commisão máxima é de 50,00 %")
 	@Column(name = "COMISSAO")
@@ -78,6 +81,7 @@ public class Cerveja implements Serializable {
 	@Column(name = "QUANTIDADE_ESTOQUE")
 	private Integer quantidadeEstoque;
 	
+	@NotNull(message = "Informar o sabor")
 	@Enumerated(EnumType.STRING)
 	@Column(name = "SABOR")
 	private Sabor sabor;

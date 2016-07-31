@@ -10,13 +10,15 @@ public class EstiloConverter implements Converter<String, Estilo> {
 	@Override
 	public Estilo convert(String source) {
 		
-		Estilo estilo = new Estilo();
-		
 		if (Boolean.FALSE.equals(StringUtils.isEmpty(source))) {
+			
+			Estilo estilo = new Estilo();
 			estilo.setId(Long.valueOf(source));
+			return estilo;
+			
 		}
 		
-		return estilo;
+		return null;
 		
 	}
 
