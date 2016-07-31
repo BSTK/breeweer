@@ -32,6 +32,7 @@ import org.thymeleaf.spring4.view.ThymeleafViewResolver;
 import org.thymeleaf.templatemode.TemplateMode;
 import org.thymeleaf.templateresolver.ITemplateResolver;
 
+import br.com.brunoluz.breeweer.thymeleaf.BreeweerDialect;
 import br.com.brunoluz.breeweer.web.converter.EstiloConverter;
 
 @EnableWebMvc
@@ -103,6 +104,7 @@ public class WebConfig extends WebMvcConfigurerAdapter implements ApplicationCon
 		engine.setEnableSpringELCompiler(Boolean.TRUE);
 		engine.setTemplateResolver(templateResolver());
 		engine.addDialect(new LayoutDialect());
+		engine.addDialect(new BreeweerDialect());
 		
 		return engine;
 		

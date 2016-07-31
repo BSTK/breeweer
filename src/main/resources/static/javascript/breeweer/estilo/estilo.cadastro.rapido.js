@@ -125,7 +125,7 @@ Breeweer.EstiloCadastroRapido = (function () {
 		
 	};
 	
-	
+
 	return EstiloCadastroRapido;
 	
 }());
