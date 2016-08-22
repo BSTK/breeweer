@@ -1,6 +1,8 @@
 package br.com.brunoluz.breeweer.config.init;
 
 import javax.servlet.Filter;
+import javax.servlet.MultipartConfigElement;
+import javax.servlet.ServletRegistration.Dynamic;
 
 import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
@@ -20,7 +22,7 @@ public class AppInitializer extends AbstractAnnotationConfigDispatcherServletIni
 	protected Class<?>[] getRootConfigClasses() {
 		return new Class<?>[] { 
 					JPAConfig.class, 
-					ServiceConfig.class 
+					ServiceConfig.class
 				};
 	}
 
@@ -44,8 +46,7 @@ public class AppInitializer extends AbstractAnnotationConfigDispatcherServletIni
 		return new String[] { "/" };
 	}
 	
-	
-	
+
 	/**
 	 * Define e força a utilização do encolding UTF-8
 	 */
@@ -58,6 +59,15 @@ public class AppInitializer extends AbstractAnnotationConfigDispatcherServletIni
 		
 		return new Filter[] { characterEncodingFilter };
 		
+	}
+	
+	
+	/**
+	 * Registra uma configuração para upload de arquivos multiparts
+	 */
+	@Override
+	protected void customizeRegistration(Dynamic registration) {
+		registration.setMultipartConfig(new MultipartConfigElement(""));
 	}
 	
 
