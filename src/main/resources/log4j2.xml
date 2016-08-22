@@ -11,6 +11,8 @@
 	
 		<Logger name="org.springframework" level="info"/>
 		<Logger name="org.hibernate" level="info"/>
+		
+		<Logger name="br.com.brunoluz.breeweer" level="info"/>
 	
 		<Root level="error">
 			<AppenderRef ref="Console" />

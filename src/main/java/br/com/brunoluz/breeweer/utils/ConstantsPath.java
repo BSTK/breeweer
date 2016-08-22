@@ -28,6 +28,12 @@ public abstract class ConstantsPath {
 	
 	
 	/**
+	 * Pcote Storage
+	 */
+	public static final String BASE_PACKAGE_CLASSES_STORAGE = "br.com.brunoluz.breeweer.storage";
+	
+	
+	/**
 	 * Configura a pasta base para template
 	 */
 	public static final String CLASSPATH_TEMPLATES = "classpath:/templates/";
