@@ -4,7 +4,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.context.request.async.DeferredResult;
 import org.springframework.web.multipart.MultipartFile;
+
+import br.com.brunoluz.breeweer.storage.FotosRunnable;
+import br.com.brunoluz.breeweer.web.dto.FotoDTO;
 
 @RestController
 @RequestMapping("/fotos")
@@ -12,12 +16,13 @@ public class FotosController {
 
 	
 	@PostMapping
-	public String upload(@RequestParam("files[]") MultipartFile[] arquivos) {
+	public DeferredResult<FotoDTO> upload(@RequestParam("files[]") MultipartFile[] arquivos) {
 		
-		for (MultipartFile file : arquivos) 
-			System.out.println("Nome : " + file.getOriginalFilename());
+		DeferredResult<FotoDTO> deferredResult = new DeferredResult<FotoDTO>();
+
+		new Thread(new FotosRunnable(arquivos, deferredResult)).start();
 		
-		return "OK Fotos !";
+		return deferredResult;
 	}
 	
 }

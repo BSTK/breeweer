@@ -36,7 +36,11 @@
 						type: 'json',
 						filelimit: 1,
 						allow: '*.(jpg|jpeg|png)',
-						action: '/breeweer/fotos'
+						action: '/breeweer/fotos',
+						complete: function (resposta) {
+							$('input[name=foto]').val(resposta.nome);
+							$('input[name=contentType]').val(resposta.contentType);
+						}
 					};
 		
 				UIkit.uploadSelect($('#uikitUploadSelect'), settings);

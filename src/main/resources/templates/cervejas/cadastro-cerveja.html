@@ -122,6 +122,8 @@
 								<i class="glyphicon glyphicon-cloud-upload"></i>
 								<span>Arraste a foto aqui ou </span>
 								<a class="bw-upload-form-file">selecione <input id="uikitUploadSelect" name="fotoUpload" type="file" accept=".jpg, .jpeg, .png" /></a>
+								<input type="hidden" th:field="*{foto}" />
+								<input type="hidden" th:field="*{contentType}" />
 							</div>
 						</div>
 					</div>

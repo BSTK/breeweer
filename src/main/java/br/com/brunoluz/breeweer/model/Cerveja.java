@@ -96,6 +96,12 @@ public class Cerveja implements Serializable {
 	@JoinColumn(name = "ID_TB_ESTILO")
 	private Estilo estilo;
 	
+	@Column(name = "FOTO")
+	private String foto;
+	
+	@Column(name = "CONTENT_TYPE")
+	private String contentType;
+	
 	
 	@PrePersist
 	@PreUpdate
@@ -277,6 +283,38 @@ public class Cerveja implements Serializable {
 	 */
 	public void setEstilo(Estilo estilo) {
 		this.estilo = estilo;
+	}
+	
+
+	/**
+	 * @return the foto
+	 */
+	public String getFoto() {
+		return foto;
+	}
+
+
+	/**
+	 * @param foto the foto to set
+	 */
+	public void setFoto(String foto) {
+		this.foto = foto;
+	}
+
+
+	/**
+	 * @return the contentType
+	 */
+	public String getContentType() {
+		return contentType;
+	}
+
+
+	/**
+	 * @param contentType the contentType to set
+	 */
+	public void setContentType(String contentType) {
+		this.contentType = contentType;
 	}
 
 
