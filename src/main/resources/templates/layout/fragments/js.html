@@ -7,6 +7,10 @@
 		<script th:src="@{/javascript/vendors/maskMoney/jquery.maskMoney.min.js}"></script>
 		<script th:src="@{/javascript/vendors/bootstrap-switch/bootstrap-switch.min.js}"></script>
 		
+		<!-- UiKit -->
+		<script th:src="@{/javascript/vendors/uikit/uikit.min.js}"></script>
+		<script th:src="@{/javascript/vendors/uikit/upload.min.js}"></script>
+		
 		<!-- Algaworks -->
 		<script th:src="@{/layout/javascripts/algaworks.min.js}"></script>
 		
@@ -18,14 +22,27 @@
 		
 		<script type="text/javascript">
 
-			$('.js-status').bootstrapSwitch({
-				size: 'small',
-				onColor: 'success',
-				offColor: 'danger',
-				onText: 'Ativo',
-				offText: 'Inativo'
-			});
+			$(function () {
+
+				$('.js-status').bootstrapSwitch({
+					size: 'small',
+					onColor: 'success',
+					offColor: 'danger',
+					onText: 'Ativo',
+					offText: 'Inativo'
+				});
+
+				var settings = {
+						type: 'json',
+						filelimit: 1,
+						allow: '*.(jpg|jpeg|png)'
+					};
 		
+				UIkit.uploadSelect($('#uikitUploadSelect'), settings);
+				UIkit.uploadDrop($('#uikitUploadDrop'), settings);
+
+			});
+
 		</script>
 	
 	</th:block>
