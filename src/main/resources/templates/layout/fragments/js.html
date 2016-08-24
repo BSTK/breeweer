@@ -6,6 +6,7 @@
 		<script th:src="@{/layout/javascripts/vendors.min.js}"></script>
 		<script th:src="@{/javascript/vendors/maskMoney/jquery.maskMoney.min.js}"></script>
 		<script th:src="@{/javascript/vendors/bootstrap-switch/bootstrap-switch.min.js}"></script>
+		<script th:src="@{/javascript/vendors/handlebars/handlebars-v4.0.5.js}"></script>
 		
 		<!-- UiKit -->
 		<script th:src="@{/javascript/vendors/uikit/uikit.min.js}"></script>
@@ -33,13 +34,37 @@
 				});
 
 				var settings = {
+						
 						type: 'json',
 						filelimit: 1,
 						allow: '*.(jpg|jpeg|png)',
 						action: '/breeweer/fotos',
 						complete: function (resposta) {
-							$('input[name=foto]').val(resposta.nome);
-							$('input[name=contentType]').val(resposta.contentType);
+							
+							var inputFoto = $('input[name=foto]');
+							var inputContentType = $('input[name=contentType]');
+
+							var fotoHandlebarsTemplate = $('#fotoHandlebarsTemplate');	
+							var fotoCervejaHTMLTemplate = fotoHandlebarsTemplate.html();
+							var template = Handlebars.compile(fotoCervejaHTMLTemplate);
+							var htmlFotoCerveja = template({nomeFoto: resposta.nome});
+
+							var uploadFoto = $('.bw-upload');
+							var fotoCervejaRegiao = $('.js-foto-cerveja-regiao');
+							var botaoRemoveFoto = $('.js-botao-remove-foto');
+
+							inputFoto.val(resposta.nome);
+							inputContentType.val(resposta.contentType);
+
+							uploadFoto.addClass('hidden');
+							fotoCervejaRegiao.append(htmlFotoCerveja);
+								
+							$('.js-botao-remove-foto').on('click', function () {
+								$('.foto-handlebars-template').remove();
+								uploadFoto.removeClass('hidden');
+								inputFoto.val('');
+								inputContentType.val('');
+							});
 						}
 					};
 		

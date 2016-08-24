@@ -125,6 +125,7 @@
 								<input type="hidden" th:field="*{foto}" />
 								<input type="hidden" th:field="*{contentType}" />
 							</div>
+							<div class="js-foto-cerveja-regiao"></div>
 						</div>
 					</div>
 				</div>
@@ -135,6 +136,7 @@
 		
 		<!-- Include Modal -->
 		<th:block th:include="estilos/cadastro-rapido-estilo :: modal-cadastro-rapido-estilo" />
+		<th:block th:replace="/handlebars/foto-cerveja" />
 		
 	</section>
 			

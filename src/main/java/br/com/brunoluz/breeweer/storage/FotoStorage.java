@@ -6,4 +6,7 @@ public interface FotoStorage {
 
 	
 	public String salvarTemporario(MultipartFile[] arquivos);
+
+	public byte[] reguperaFotoTemporaria(String nome);
+	
 }
