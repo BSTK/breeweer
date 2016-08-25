@@ -118,7 +118,7 @@
 					<div class="col-sm-12">
 						<div class="form-group">
 							<label for="fotoUpload">Foto</label>
-							<div id="uikitUploadDrop" class="bw-upload">
+							<div id="uikitUploadDrop" class="bw-upload" th:attr="data-url-fotos=@{/fotos}">
 								<i class="glyphicon glyphicon-cloud-upload"></i>
 								<span>Arraste a foto aqui ou </span>
 								<a class="bw-upload-form-file">selecione <input id="uikitUploadSelect" name="fotoUpload" type="file" accept=".jpg, .jpeg, .png" /></a>
