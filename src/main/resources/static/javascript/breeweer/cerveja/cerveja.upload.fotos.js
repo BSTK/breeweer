@@ -30,6 +30,18 @@ Breeweer.UploadFoto = (function () {
 		UIkit.uploadSelect($('#uikitUploadSelect'), settings);
 		UIkit.uploadDrop(this.uikitUploadDrop, settings);
 		
+		
+		/**
+		 * Usando o call
+		 * Uso do nomeFuncao.call(this, object);
+		 * faz uma chamada a função, forçando o contexto this
+		 */
+		if (this.inputFoto.val()) {
+			onUploadCompleto.call(this, { 
+				nome:this.inputFoto.val() , 
+				contentType: this.inputContentType.val()
+			});
+		}
 	};
 	
 	
