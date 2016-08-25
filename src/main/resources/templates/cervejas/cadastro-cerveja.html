@@ -20,28 +20,28 @@
 				<breeweer:message />
 				<div class="row">
 					<div class="col-sm-2">
-						<div class="form-group" breeweer:classforerror="sku">
-							<label for="sku" class="control-label">SKU*</label>
+						<div class="form-group bw-required" breeweer:classforerror="sku">
+							<label for="sku" class="control-label">SKU</label>
 							<input id="sku" th:field="*{sku}" type="text" class="form-control"/>
 						</div>
 					</div>
 					<div class="col-sm-10">
-						<div class="form-group" breeweer:classforerror="nome">
-							<label for="nome" class="control-label">Nome*</label>
+						<div class="form-group  bw-required" breeweer:classforerror="nome">
+							<label for="nome" class="control-label">Nome</label>
 							<input id="nome" th:field="*{nome}" type="text" class="form-control"/>
 						</div>
 					</div>
 				</div>
 				
-				<div class="form-group" breeweer:classforerror="descricao">
-					<label for="descricao" class="control-label">Descrição*</label>
+				<div class="form-group  bw-required" breeweer:classforerror="descricao">
+					<label for="descricao" class="control-label">Descrição</label>
 					<textarea id="descricao" th:field="*{descricao}" rows="3" class="form-control"></textarea>
 				</div>
 				
 				<div class="row">
 					<div class="col-sm-3">
-						<div class="form-group" breeweer:classforerror="estilo">
-							<label for="estilo" class="control-label">Estilo*</label>
+						<div class="form-group  bw-required" breeweer:classforerror="estilo">
+							<label for="estilo" class="control-label">Estilo</label>
 							<div class="bw-field-action">
 								<select class="form-control js-select-estilo" th:field="*{estilo}">
 									<option value="" label="Selecionar estilo">
@@ -57,8 +57,8 @@
 						</div>
 					</div>
 					<div class="col-sm-3">
-						<div class="form-group" breeweer:classforerror="sabor">
-							<label for="sabor" class="control-label">Sabor*</label>
+						<div class="form-group  bw-required" breeweer:classforerror="sabor">
+							<label for="sabor" class="control-label">Sabor</label>
 							<select class="form-control" th:field="*{sabor}">
 								<option value="" label="Selecionar sabor">
 								<option th:each="sabor : ${sabores}" th:value="${sabor}" th:label="${sabor.descricao}" />
@@ -66,16 +66,16 @@
 						</div>
 					</div>
 					<div class="col-sm-3">
-						<div class="form-group" breeweer:classforerror="teorAlcoolico">
-							<label for="teorAlcoolico" class="control-label">Teor Acoólico*</label>
+						<div class="form-group  bw-required" breeweer:classforerror="teorAlcoolico">
+							<label for="teorAlcoolico" class="control-label">Teor Acoólico</label>
 							<div class="input-group">
 								<input type="text" class="form-control js-maskmoney-decimal" th:field="*{teorAlcoolico}"/>
 								<span class="input-group-addon">%</span>
 							</div>
 						</div>
 					</div>
-					<div class="col-lg-3 col-sm-6" breeweer:classforerror="origem">
-						<label for="origem" class="control-label">Origem*</label>
+					<div class="col-lg-3 col-sm-6  bw-required" breeweer:classforerror="origem">
+						<label for="origem" class="control-label">Origem</label>
 						<div class="form-group">
 							<th:block th:each="origem : ${origens}">
 								<div class="radio radio-inline">
@@ -89,8 +89,8 @@
 				
 				<div class="row">
 					<div class="col-sm-3">
-						<div class="form-group" breeweer:classforerror="valor">
-							<label for="valor" class="control-label">Valor*</label>
+						<div class="form-group bw-required" breeweer:classforerror="valor">
+							<label for="valor" class="control-label">Valor</label>
 							<div class="input-group">
 								<span class="input-group-addon">R$</span>
 								<input type="text" class="form-control js-maskmoney-decimal" th:field="*{valor}"/>
@@ -98,8 +98,8 @@
 						</div>
 					</div>
 					<div class="col-sm-3">
-						<div class="form-group" breeweer:classforerror="comissao">
-							<label for="comissao" class="control-label">Comissão*</label>
+						<div class="form-group bw-required" breeweer:classforerror="comissao">
+							<label for="comissao" class="control-label">Comissão</label>
 							<div class="input-group">
 								<input type="text" class="form-control js-maskmoney-decimal" th:field="*{comissao}"/>
 								<span class="input-group-addon">%</span>
@@ -107,8 +107,8 @@
 						</div>
 					</div>
 					<div class="col-sm-3">
-						<div class="form-group" breeweer:classforerror="quantidadeEstoque">
-							<label for="quantidadeEstoque" class="control-label">Estoque*</label>
+						<div class="form-group bw-required" breeweer:classforerror="quantidadeEstoque">
+							<label for="quantidadeEstoque" class="control-label">Estoque</label>
 							<input type="text" class="form-control js-maskmoney-integer" th:field="*{quantidadeEstoque}"/>
 						</div>
 					</div>
