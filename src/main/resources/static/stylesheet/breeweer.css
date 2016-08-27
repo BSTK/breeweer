@@ -43,3 +43,51 @@
 	cursor: pointer;
 	font-size: 500px;
 }
+
+/* Tabela Simples */
+.bw-tabela-simples {
+	margin-top: 20px;	
+}
+
+.bw-tabela-simples table tr th {
+	border-bottom-width: 1px;
+}
+
+.bw-tabela-simples table tr td {
+	border-top: none;
+	border-bottom: 1px solid #E7EAEC;
+	padding: 10px;
+	vertical-align: middle;
+}
+
+/* Tabela colunas */
+.table-cerveja-col-foto {
+	min-width: 50px;
+	width: 50px;
+}
+
+.table-cerveja-col-sku {
+	width: 90px;
+	text-align: center;
+}
+
+.table-cerveja-col-nome {
+	
+}
+
+.table-cerveja-col-estilo {
+	width: 120px;
+}
+
+.table-cerveja-col-origem {
+	width: 100px;
+}
+
+.table-cerveja-col-valor {
+	width: 100px;
+	text-align: right;
+}
+
+.table-cerveja-col-acoes {
+	width: 100px;
+}

@@ -23,7 +23,23 @@
 		
 		<!-- Breeweer Cerveja -->
 		<script th:src="@{/javascript/breeweer/cerveja/cerveja.upload.fotos.js}"></script>
-	
+		
+		<script type="text/javascript">
+
+			$(function () {
+
+				$('.js-status').bootstrapSwitch({
+					size: 'small',
+					onColor: 'success',
+					offColor: 'danger',
+					onText: 'Ativo',
+					offText: 'Inativo'
+				});
+
+			});
+
+		</script>
+		
 	</th:block>
 	
 </html>

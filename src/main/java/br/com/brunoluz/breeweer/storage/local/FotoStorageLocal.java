@@ -15,21 +15,31 @@ import br.com.brunoluz.breeweer.storage.FotoStorage;
 
 public class FotoStorageLocal implements FotoStorage {
 
-	private static final Logger LOGGER = LoggerFactory
-			.getLogger(FotoStorageLocal.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(FotoStorageLocal.class);
 
 	private Path local;
 	private Path localTemp;
 
 	public FotoStorageLocal() {
-		this(FileSystems.getDefault().getPath(System.getenv("HOMEPATH"),
-				".breeweer-fotos"));
+		this(FileSystems.getDefault().getPath(System.getenv("HOMEPATH"),".breeweer-fotos"));
 	}
 
 	public FotoStorageLocal(Path local) {
 		this.local = local;
 		criarDiretorios();
 	}
+	
+	
+	@Override
+	public void salvar(String foto) {
+		try {
+			Files.move(local.resolve(foto), localTemp.resolve(foto));
+		} catch (Exception e) {
+			throw new RuntimeException("Error ao salvar fotos !\nError "
+					+ e.getMessage());
+		}
+	}
+	
 
 	@Override
 	public String salvarTemporario(MultipartFile[] arquivos) {
@@ -54,17 +64,18 @@ public class FotoStorageLocal implements FotoStorage {
 
 	}
 
+	
 	@Override
 	public byte[] reguperaFotoTemporaria(String nome) {
 		try {
 
 			return Files.readAllBytes(localTemp.resolve(nome));
 		} catch (IOException e) {
-			throw new RuntimeException(
-					"Error ao ler a foto temporaria !\nError " + e.getMessage());
+			throw new RuntimeException("Error ao ler a foto temporaria !\nError " + e.getMessage());
 		}
 	}
 
+	
 	private String renomeiaArquivoUpload(MultipartFile arquivo) {
 
 		StringBuilder nomeArquivoUpload = new StringBuilder();
@@ -72,19 +83,18 @@ public class FotoStorageLocal implements FotoStorage {
 		nomeArquivoUpload.append("-");
 		nomeArquivoUpload.append(arquivo.getOriginalFilename());
 
-		LOGGER.info("Novo arquivo upload armazenado : "
-				+ nomeArquivoUpload.toString());
+		LOGGER.info("Novo arquivo upload armazenado : " + nomeArquivoUpload.toString());
 
 		return nomeArquivoUpload.toString();
 	}
 
+	
 	private void criarDiretorios() {
 
 		try {
 
 			Files.createDirectories(local);
-			localTemp = FileSystems.getDefault().getPath(local.toString(),
-					"temp");
+			localTemp = FileSystems.getDefault().getPath(local.toString(),"temp");
 			Files.createDirectories(localTemp);
 
 			LOGGER.info("Pastas criadas para salvar fotos");
@@ -92,9 +102,7 @@ public class FotoStorageLocal implements FotoStorage {
 			LOGGER.info("Pasta temporaria : " + localTemp.toAbsolutePath());
 
 		} catch (Exception e) {
-			throw new RuntimeException(
-					"Error ao criar pastar para fotos !\nError "
-							+ e.getMessage());
+			throw new RuntimeException("Error ao criar pastar para fotos !\nError " + e.getMessage());
 		}
 
 	}
