@@ -14,7 +14,6 @@ public class CervejaSalvaEvento {
 	 * @param cerveja
 	 */
 	public CervejaSalvaEvento(Cerveja cerveja) {
-		super();
 		this.cerveja = cerveja;
 	}
 
@@ -27,6 +26,10 @@ public class CervejaSalvaEvento {
 	}
 	
 	
+	/**
+	 * temFoto
+	 * @return
+	 */
 	public boolean temFoto() {
 		return !StringUtils.isEmpty(cerveja.getFoto());
 	}

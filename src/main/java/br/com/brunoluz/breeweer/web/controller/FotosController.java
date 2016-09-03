@@ -39,4 +39,10 @@ public class FotosController {
 	}
 	
 	
+	@GetMapping("/local/{nome:.*}")
+	public byte[] reguperaFotoLocal(@PathVariable String nome) {
+		return fotoStorage.reguperaFotoLocal(nome);
+	}
+	
+	
 }

@@ -7,6 +7,9 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.UUID;
 
+import net.coobird.thumbnailator.Thumbnails;
+import net.coobird.thumbnailator.name.Rename;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.multipart.MultipartFile;
@@ -33,11 +36,20 @@ public class FotoStorageLocal implements FotoStorage {
 	@Override
 	public void salvar(String foto) {
 		try {
-			Files.move(local.resolve(foto), localTemp.resolve(foto));
-		} catch (Exception e) {
-			throw new RuntimeException("Error ao salvar fotos !\nError "
-					+ e.getMessage());
-		}
+			
+			Files.move(localTemp.resolve(foto), local.resolve(foto));
+			
+			if (LOGGER.isInfoEnabled()) {
+				LOGGER.info("Movendo Fotos");
+				LOGGER.info("Movendo de : " + localTemp.resolve(foto).toString());
+				LOGGER.info("Para : " + local.resolve(foto).toString());
+			}
+			
+			Thumbnails.of(local.resolve(foto).toString())
+					.size(40, 48)
+					.toFiles(Rename.PREFIX_HYPHEN_THUMBNAIL);
+			
+		} catch (Exception e) {}
 	}
 	
 
@@ -63,6 +75,18 @@ public class FotoStorageLocal implements FotoStorage {
 		return nomeArquivo;
 
 	}
+	
+	
+	@Override
+	public byte[] reguperaFotoLocal(String nome) {
+		try {
+			
+			return Files.readAllBytes(local.resolve(nome));
+			
+		} catch (IOException e) {
+			throw new RuntimeException("Error ao ler a foto local !\nError " + e.getMessage());
+		}
+	}
 
 	
 	@Override
@@ -70,9 +94,11 @@ public class FotoStorageLocal implements FotoStorage {
 		try {
 
 			return Files.readAllBytes(localTemp.resolve(nome));
+			
 		} catch (IOException e) {
 			throw new RuntimeException("Error ao ler a foto temporaria !\nError " + e.getMessage());
 		}
+
 	}
 
 	

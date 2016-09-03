@@ -9,7 +9,6 @@ import br.com.brunoluz.breeweer.storage.FotoStorage;
 @Component
 public class CervejaSalvaListener {
 
-	
 	@Autowired
 	private FotoStorage fotoStorage;
 	

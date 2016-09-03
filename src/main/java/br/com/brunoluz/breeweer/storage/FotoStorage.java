@@ -8,7 +8,10 @@ public interface FotoStorage {
 	public String salvarTemporario(MultipartFile[] arquivos);
 
 	public byte[] reguperaFotoTemporaria(String nome);
+	
+	public byte[] reguperaFotoLocal(String nome);
 
 	public void salvar(String foto);
+
 	
 }

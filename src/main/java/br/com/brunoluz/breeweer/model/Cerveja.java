@@ -23,6 +23,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotBlank;
+import org.springframework.util.StringUtils;
 
 import br.com.brunoluz.breeweer.validation.SKU;
 
@@ -284,6 +285,15 @@ public class Cerveja implements Serializable {
 	public void setEstilo(Estilo estilo) {
 		this.estilo = estilo;
 	}
+	
+	
+	/**
+	 * @return the foto
+	 */
+	public String getFotoOuMock() {
+		return !StringUtils.isEmpty(foto) ? "thumbnail-".concat(foto) : "thumbnail.cerveja-mock.png";
+	}
+	
 	
 
 	/**

@@ -13,6 +13,7 @@ import br.com.brunoluz.breeweer.service.eventos.CervejaSalvaEvento;
 @Transactional
 public class CadastroCervejaService {
 
+	
 	@Autowired
 	private CervejaRepository repository;
 	
@@ -27,6 +28,7 @@ public class CadastroCervejaService {
 		
 		repository.save(cerveja);
 		applicationEventPublisher.publishEvent(new CervejaSalvaEvento(cerveja));
+
 	}
 	
 	
