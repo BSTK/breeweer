@@ -1,12 +1,13 @@
 package br.com.brunoluz.breeweer.repository.helper.cerveja;
 
-import java.util.List;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 import br.com.brunoluz.breeweer.model.Cerveja;
 import br.com.brunoluz.breeweer.repository.filtro.CervejasFiltro;
 
 public interface CervejasRepositoryQueries {
 
-	public List<Cerveja> filtrar(CervejasFiltro filtro);
+	public Page<Cerveja> filtrar(CervejasFiltro filtro, Pageable pageable);
 	
 }

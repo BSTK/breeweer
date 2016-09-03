@@ -1,14 +1,16 @@
 package br.com.brunoluz.breeweer.repository.helper.cerveja;
 
-import java.util.List;
-
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.criterion.MatchMode;
+import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.Pageable;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
 
@@ -25,9 +27,44 @@ public class CervejasRepositoryImpl implements CervejasRepositoryQueries {
 	@Override
 	@SuppressWarnings("unchecked")
 	@Transactional(readOnly = true)
-	public List<Cerveja> filtrar(CervejasFiltro filtro) {
+	public Page<Cerveja> filtrar(CervejasFiltro filtro, Pageable pageable) {
 		
 		Criteria criteria = manager.unwrap(Session.class).createCriteria(Cerveja.class);
+		
+		int paginaAtual = pageable.getPageNumber();
+		int totalRegistrosPorPagina = pageable.getPageSize();
+		int primeiroRegistro = paginaAtual * totalRegistrosPorPagina;
+		
+		criteria.setFirstResult(primeiroRegistro);
+		criteria.setMaxResults(totalRegistrosPorPagina);
+		
+		adicionarFiltro(filtro, criteria);
+		
+		return new PageImpl<Cerveja>(criteria.list(), pageable, total(filtro));
+	}
+	
+	
+	/**
+	 * total
+	 * @param filtro
+	 * @return
+	 */
+	private Long total(CervejasFiltro filtro) {
+		
+		Criteria criteria = manager.unwrap(Session.class).createCriteria(Cerveja.class);
+		adicionarFiltro(filtro, criteria);
+		criteria.setProjection(Projections.rowCount());
+		
+		return (Long) criteria.uniqueResult();
+	}
+
+
+	/**
+	 * adicionarFiltro
+	 * @param filtro
+	 * @param criteria
+	 */
+	private void adicionarFiltro(CervejasFiltro filtro, Criteria criteria) {
 		
 		if (filtro != null) {
 			
@@ -60,12 +97,10 @@ public class CervejasRepositoryImpl implements CervejasRepositoryQueries {
 			}
 			
 		}
-		
-		return criteria.list();
 	}
 	
-	
-	
+
+
 	/**
 	 * isEstiloPresente
 	 * @param filtro

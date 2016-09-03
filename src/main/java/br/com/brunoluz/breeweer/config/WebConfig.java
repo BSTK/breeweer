@@ -16,6 +16,7 @@ import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.web.config.EnableSpringDataWebSupport;
 import org.springframework.format.number.NumberStyleFormatter;
 import org.springframework.format.support.DefaultFormattingConversionService;
 import org.springframework.format.support.FormattingConversionService;
@@ -37,6 +38,7 @@ import br.com.brunoluz.breeweer.web.converter.EstiloConverter;
 
 @EnableWebMvc
 @Configuration
+@EnableSpringDataWebSupport
 @ComponentScan(value = BASE_PACKAGE_CLASSES)
 public class WebConfig extends WebMvcConfigurerAdapter implements ApplicationContextAware {
 	

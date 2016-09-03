@@ -98,7 +98,7 @@
 						</tr>
 					</thead>
 					<tbody>
-						<tr th:each="cerveja : ${cervejas}">
+						<tr th:each="cerveja : ${pagina.content}">
 							<td class="text-center">
 								<img th:src="@{/fotos/local/{foto}(foto=${cerveja.fotoOuMock})}" class="img-responsive" />
 							</td>
@@ -122,7 +122,26 @@
 					</tbody>
 				</table>
 			</div>
-			
+
+			<div class="row text-center" th:if="${not #lists.isEmpty(pagina.content)}">
+				<div class="col-sm-12">
+					<ul class="pagination pagination-sm">
+						<li class="disabled"><a href="#">&laquo;</a></li>
+						
+						<th:block th:each="p : ${#numbers.sequence(1, pagina.totalPages)}" 
+								  th:with="numeroPagina=${p - 1}, paginaAtual=${pagina.number}">
+								  
+							<li th:class="${paginaAtual == numeroPagina} ? active">
+								<a th:href="|?page=${numeroPagina}|">[[${p}]]</a>
+							</li>
+							
+						</th:block>
+						
+						<li><a href="#">&raquo;</a></li>
+					</ul>
+				</div>
+			</div>
+
 		</div>
 		
 	</section>
