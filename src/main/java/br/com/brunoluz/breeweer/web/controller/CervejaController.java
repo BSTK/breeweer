@@ -14,8 +14,9 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import br.com.brunoluz.breeweer.model.Cerveja;
 import br.com.brunoluz.breeweer.model.Origem;
 import br.com.brunoluz.breeweer.model.Sabor;
-import br.com.brunoluz.breeweer.repository.CervejaRepository;
+import br.com.brunoluz.breeweer.repository.CervejasRepository;
 import br.com.brunoluz.breeweer.repository.EstiloRepository;
+import br.com.brunoluz.breeweer.repository.filtro.CervejasFiltro;
 import br.com.brunoluz.breeweer.service.CadastroCervejaService;
 
 
@@ -31,7 +32,7 @@ public class CervejaController {
 	private CadastroCervejaService service;
 	
 	@Autowired
-	private CervejaRepository cervejas;
+	private CervejasRepository cervejas;
 	
 	
 	@GetMapping("/novo")
@@ -64,13 +65,13 @@ public class CervejaController {
 	
 	
 	@GetMapping
-	public ModelAndView pesquisa() {
+	public ModelAndView pesquisa(CervejasFiltro cervejasFiltro, BindingResult result) {
 		
 		ModelAndView view = new ModelAndView("cervejas/pesquisa-cerveja");
 		view.addObject("sabores", Sabor.values());
 		view.addObject("origens", Origem.values());
 		view.addObject("estilos", estilos.findAll());
-		view.addObject("cervejas", cervejas.findAll());
+		view.addObject("cervejas", cervejas.filtrar(cervejasFiltro));
 		
 		return view;
 	}

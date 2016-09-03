@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import br.com.brunoluz.breeweer.model.Cerveja;
-import br.com.brunoluz.breeweer.repository.CervejaRepository;
+import br.com.brunoluz.breeweer.repository.CervejasRepository;
 import br.com.brunoluz.breeweer.service.eventos.CervejaSalvaEvento;
 
 @Service
@@ -15,7 +15,7 @@ public class CadastroCervejaService {
 
 	
 	@Autowired
-	private CervejaRepository repository;
+	private CervejasRepository repository;
 	
 	@Autowired
 	private ApplicationEventPublisher applicationEventPublisher; 
