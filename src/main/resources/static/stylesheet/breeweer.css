@@ -1,8 +1,3 @@
-/* Core */
-body {
-	overflow-y:hidden;
-}
-
 /* Componentes css */
 .bw-field-action {
 	display: flex;
