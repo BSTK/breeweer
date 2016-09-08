@@ -1,5 +1,6 @@
 package br.com.brunoluz.breeweer.web.controller;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +21,7 @@ import br.com.brunoluz.breeweer.repository.CervejasRepository;
 import br.com.brunoluz.breeweer.repository.EstiloRepository;
 import br.com.brunoluz.breeweer.repository.filtro.CervejasFiltro;
 import br.com.brunoluz.breeweer.service.CadastroCervejaService;
+import br.com.brunoluz.breeweer.web.paginacao.PageWrapper;
 
 
 @Controller
@@ -67,13 +69,14 @@ public class CervejaController {
 	
 	
 	@GetMapping
-	public ModelAndView pesquisa(CervejasFiltro cervejasFiltro, BindingResult result, @PageableDefault(size = 2) Pageable pageable) {
+	public ModelAndView pesquisa(CervejasFiltro cervejasFiltro, BindingResult result, 
+			@PageableDefault(size = 2) Pageable pageable, HttpServletRequest request) {
 		
 		ModelAndView view = new ModelAndView("cervejas/pesquisa-cerveja");
 		view.addObject("sabores", Sabor.values());
 		view.addObject("origens", Origem.values());
 		view.addObject("estilos", estilos.findAll());
-		view.addObject("pagina", cervejas.filtrar(cervejasFiltro, pageable));
+		view.addObject("pagina", new PageWrapper<Cerveja>(cervejas.filtrar(cervejasFiltro, pageable), request));
 		
 		return view;
 	}
